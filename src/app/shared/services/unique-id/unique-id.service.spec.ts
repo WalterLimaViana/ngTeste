@@ -7,7 +7,7 @@ describe(UniqueIdService.name, () => {
     //Criar uma variável de um novo id
     const id = service.generateUniqueIdWithPrefix('app');
     //o que esperar dessa váriavel
-    expect(id).toContain('app-');
+    expect(id.startsWith('app-')).toBeTrue();
   });
 });
 
