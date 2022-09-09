@@ -1,7 +1,7 @@
 import { UniqueIdService } from './unique-id.service';
 
-describe('UniqueIdService', () => {
-  it('#generateUniqueIdWithPrefix should generate id when called with prefix', () => {
+describe(UniqueIdService.name, () => {
+  it(`#${UniqueIdService.prototype.generateUniqueIdWithPrefix.name} should generate id when called with prefix`, () => {
     //criar um novo service
     const service = new UniqueIdService();
     //Criar uma variável de um novo id
