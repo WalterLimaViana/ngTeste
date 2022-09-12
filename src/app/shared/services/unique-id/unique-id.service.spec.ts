@@ -28,6 +28,16 @@ describe(UniqueIdService.name, () => {
     service.generateUniqueIdWithPrefix('app');
     expect(service.getNumberOfGeneratedUniqueIds()).toBe(2);
   });
+
+  it(`#${UniqueIdService.prototype.generateUniqueIdWithPrefix.name} should throw when called empty`, () => {
+    // expect(() => service.generateUniqueIdWithPrefix(null)).toThrow();
+    // expect(() => service.generateUniqueIdWithPrefix(undefined)).toThrow();
+    // expect(() => service.generateUniqueIdWithPrefix('')).toThrow();
+    const emptyValues = [null, undefined, ''];
+    emptyValues.forEach((emptyValues) =>
+      expect(() => service.generateUniqueIdWithPrefix(emptyValues)).toThrow()
+    );
+  });
 });
 
 // Escopo de teste
