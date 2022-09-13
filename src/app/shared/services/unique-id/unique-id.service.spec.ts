@@ -36,7 +36,9 @@ describe(UniqueIdService.name, () => {
     // Adicionando numeros dentro de uma string para validar o teste
     const emptyValues = [null, undefined, '', '0', '1'];
     emptyValues.forEach((emptyValue) =>
-      expect(() => service.generateUniqueIdWithPrefix(emptyValue)).toThrow()
+      expect(() => service.generateUniqueIdWithPrefix(emptyValue))
+        .withContext(`Empty Value: ${emptyValue}`) // Para identificar qual é o erro lançado(nesse caso o prefixo que está aparecendo)
+        .toThrow()
     );
   });
 });
