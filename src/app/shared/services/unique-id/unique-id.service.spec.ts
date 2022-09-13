@@ -33,9 +33,10 @@ describe(UniqueIdService.name, () => {
     // expect(() => service.generateUniqueIdWithPrefix(null)).toThrow();
     // expect(() => service.generateUniqueIdWithPrefix(undefined)).toThrow();
     // expect(() => service.generateUniqueIdWithPrefix('')).toThrow();
-    const emptyValues = [null, undefined, ''];
-    emptyValues.forEach((emptyValues) =>
-      expect(() => service.generateUniqueIdWithPrefix(emptyValues)).toThrow()
+    // Adicionando numeros dentro de uma string para validar o teste
+    const emptyValues = [null, undefined, '', '0', '1'];
+    emptyValues.forEach((emptyValue) =>
+      expect(() => service.generateUniqueIdWithPrefix(emptyValue)).toThrow()
     );
   });
 });
