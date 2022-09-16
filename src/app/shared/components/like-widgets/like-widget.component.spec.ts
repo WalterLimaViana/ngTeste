@@ -13,7 +13,7 @@ describe(LikeWidgetComponent.name, () => {
   });
 
   it('Should create a component', () => {
-    const instance = fixture.componentInstance;
-    expect(instance).toBeTruthy();
+    const component = fixture.componentInstance;
+    expect(component).toBeTruthy();
   });
 });
