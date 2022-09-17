@@ -4,6 +4,7 @@ import { LikeWidgetModule } from './like-widget.module';
 
 describe(LikeWidgetComponent.name, () => {
   let fixture: ComponentFixture<LikeWidgetComponent> = null;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [LikeWidgetModule],
@@ -21,5 +22,13 @@ describe(LikeWidgetComponent.name, () => {
     const component = fixture.componentInstance;
     fixture.detectChanges();
     expect(component.id).toBeTruthy();
+  });
+
+  it('Should not generate ID when id Input property is present', () => {
+    const component = fixture.componentInstance;
+    const someId = 'someId';
+    component.id = someId;
+    fixture.detectChanges();
+    expect(component.id).toBe(someId);
   });
 });

@@ -9,7 +9,7 @@ export class UniqueIdService {
 
   public generateUniqueIdWithPrefix(prefix: string): string {
     if (!prefix || !this.validId.test(prefix)) {
-      throw Error('Prefixo não pode estar vazio');
+      throw Error('Prefixo não pode estar vazio!!!');
     }
     const uniqueId = this.generateUniqueId();
     this.numberOfGeneratedIds++;
