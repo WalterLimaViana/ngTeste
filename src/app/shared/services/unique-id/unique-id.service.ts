@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class UniqueIdService {
   private numberOfGeneratedIds = 0;
   //Criado uma expressão regular para aceitar somente letras no prefixo
-  private validId = /^[A-Za-z]+[\W\-\:z.]*$/;
+  private validId = /^[A-Za-z]+[\w\-\:z.]*$/;
 
   public generateUniqueIdWithPrefix(prefix: string): string {
     if (!prefix || !this.validId.test(prefix)) {
