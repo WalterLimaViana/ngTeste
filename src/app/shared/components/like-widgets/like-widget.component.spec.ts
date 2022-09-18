@@ -21,12 +21,12 @@ describe(LikeWidgetComponent.name, () => {
 
   // erro corrigido , havia um erro na construção de regex:  /^[A-Za-z]+[\w\-\:\.]*$/;  o \w estava em maiúsculo
 
-  it('Should auto generate ID when id Input property is missing', () => {
+  it('Should auto-generate ID during ngOnInit when (@Input id) is not assigned', () => {
     fixture.detectChanges(); // detectando as mudanças que foram alteradas
     expect(component.id).toBeTruthy();
   });
 
-  it('Should not generate ID when id Input property is present', () => {
+  it('Should NOT auto-generate ID during ngOnInit when (@Input id) is assigned', () => {
     const someId = 'someId';
     component.id = someId;
     fixture.detectChanges();
@@ -46,7 +46,7 @@ describe(LikeWidgetComponent.name, () => {
   // });
 
   //Melhorando o it utilizando o spyOn e o toHaveBeenCalled
-  it(`#${LikeWidgetComponent.prototype.like.name} should trigger emission when called`, () => {
+  it(`#${LikeWidgetComponent.prototype.like.name} should (@Output liked) emission when called`, () => {
     spyOn(component.liked, 'emit'); //o spyOn verifica o component e puxa a função emit para evitar dar erro
     fixture.detectChanges();
     component.like();
