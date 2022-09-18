@@ -22,7 +22,7 @@ describe(LikeWidgetComponent.name, () => {
   // erro corrigido , havia um erro na construção de regex:  /^[A-Za-z]+[\w\-\:\.]*$/;  o \w estava em maiúsculo
 
   it('Should auto generate ID when id Input property is missing', () => {
-    fixture.detectChanges();
+    fixture.detectChanges(); // detectando as mudanças que foram alteradas
     expect(component.id).toBeTruthy();
   });
 
@@ -36,12 +36,20 @@ describe(LikeWidgetComponent.name, () => {
   //Testando as propriedades do output
   // Para garantir que o subscribe será realizada, pode trocar o () da chamada por uma palavra e chamá-la após o expect como um metodo
   //Se não for chamado esse done, por algum motivo, isso vai gerar um erro no teste.
-  it(`#${LikeWidgetComponent.prototype.like.name} should trigger emission when called`, (done) => {
+  // it(`#${LikeWidgetComponent.prototype.like.name} should trigger emission when called`, (done) => {
+  //   fixture.detectChanges();
+  //   component.liked.subscribe(() => {
+  //     expect(true).toBeTrue();
+  //     done();
+  //   });
+  //   component.like();
+  // });
+
+  //Melhorando o it utilizando o spyOn e o toHaveBeenCalled
+  it(`#${LikeWidgetComponent.prototype.like.name} should trigger emission when called`, () => {
+    spyOn(component.liked, 'emit'); //o spyOn verifica o component e puxa a função emit para evitar dar erro
     fixture.detectChanges();
-    component.liked.subscribe(() => {
-      expect(true).toBeTrue();
-      done();
-    });
     component.like();
+    expect(component.liked.emit).toHaveBeenCalled();
   });
 });
