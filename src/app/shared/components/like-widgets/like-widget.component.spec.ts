@@ -34,10 +34,13 @@ describe(LikeWidgetComponent.name, () => {
   });
 
   //Testando as propriedades do output
-  it(`#${LikeWidgetComponent.prototype.like.name} should trigger emission when called`, () => {
+  // Para garantir que o subscribe será realizada, pode trocar o () da chamada por uma palavra e chamá-la após o expect como um metodo
+  //Se não for chamado esse done, por algum motivo, isso vai gerar um erro no teste.
+  it(`#${LikeWidgetComponent.prototype.like.name} should trigger emission when called`, (done) => {
     fixture.detectChanges();
     component.liked.subscribe(() => {
       expect(true).toBeTrue();
+      done();
     });
     component.like();
   });
