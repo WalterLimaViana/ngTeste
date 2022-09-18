@@ -9,6 +9,7 @@ module.exports = function (config) {
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
+      require('karma-firefox-launcher'),
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
@@ -28,7 +29,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'Firefox'],
     singleRun: false,
     restartOnFileChange: true
   });
